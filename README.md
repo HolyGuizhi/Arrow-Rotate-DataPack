@@ -1,6 +1,8 @@
 # 【Minecraft】<b>箭矢轉向器 Data Pack</b>  by Guizhi
 
-<!-- 請注意，這個檔案是.md檔，如果您下載下來並用普通文字檔(.txt)開啟，會難以觀看，請轉移至Github頁面觀看即可。 -->
+<!--
+  請注意，此檔案為.md檔，如果您下載下來並用普通文字檔(.txt)開啟較難以觀看，請轉移至Github頁面觀看即可。
+-->
 
 ## <b>簡介</b>：
 此資料包由桂枝製作，<br>
@@ -10,33 +12,40 @@
 此資料包功能為：<br>
 " 在不改變箭矢總動量大小的情況下，將動量方向轉向至朝向 `@e[tag=aim_pos,limit=1]` 的位置 "<br>
 
-如果您不了解上方說明，<br>
-白話一點就是讓箭矢接下來是往 `@e[tag=aim_pos,limit=1]` 的位置射過去。<br><br>
+如果您不太了解上方說明，<br>
+白話一點就是讓箭矢接下來轉向往 `@e[tag=aim_pos,limit=1]` 的位置射過去。<br><br>
 
 而此資料包的特點就在於不是使用/tp的方式移動箭矢，<br>
-因此不會將箭矢定速，也不會將箭矢加速。<br><br>
+所以不是 "追蹤" 箭矢，不會將箭矢加速或者定速。<br><br>
 
-此資料包已用於我正在製作的地圖中，<br>
+此資料包正用於我在製作的地圖中，<br>
 主要功能是讓箭矢在靠近敵人一定距離時自動轉向至朝向它。<br>
 
 非常強大。<br><br>
 
 ## <b>使用說明</b>：
-- 前置步驟：<br>
+- **前置步驟：**<br>
 在希望箭矢射向的位置處召喚一個實體(marker)，<br>
 並對此 marker 附上一個 `aim_pos` 的tag，方法為：<br>
 `/summon marker <目標位置> {Tags:["aim_pos"]}`<br>
 或是在已經有實體的情況下執行以下指令：<br>
 `/tag <目標處的實體> add aim_pos`<br><br>
 
-- 執行：<br>
+- **執行：**<br>
 針對要修改動量方向的箭矢，以該箭矢為中心執行指令：<br>
 `/execute as <目標箭矢> run function arrow_rotate:exe`<br>
-請注意在改變箭矢朝向之後，<br>
-如果 `@e[tag=aim_pos,limit=1]` 為marker，會直接將其刪除，<br>
-如果不是marker，則只單純移除aim_pos的tag。<br><br>
+請注意在箭矢改變朝向之後，<br>
+如果 `auto_remove` 在 `mag` 記分板下分數為1，<br>
+會刪除掉 `@e[tag=aim_pos,type=marker]` 實體，<br>
+並且移除所有實體的 "aim_pos" 的tag。<br><br>
 
-- 重置設定：<br>
+- **自動移除aim_pos：**<br>
+如同前項所述，使用以下指令後，以後箭矢轉向後會自動移除aim_pos：<br>
+`/scoreboard players set auto_remove mag 1`<br>
+帶有tag為aim_pos的marker實體會被自動刪除，<br>
+而非marker實體的則單純被移除此tag。<br><br>
+
+- **重置設定：**<br>
 `/function arrow_rotate:reset`<br><br>
 
 ## <b>補充</b>：

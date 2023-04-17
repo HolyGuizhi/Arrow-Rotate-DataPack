@@ -24,5 +24,5 @@ scoreboard players operation @s az = @s vec_z
 execute if entity @e[tag=aim_pos] run function arrow_rotate:main
 
 ## 收尾
-kill @e[tag=aim_pos,type=marker]
-tag @e[tag=aim_pos] remove aim_pos
+execute if score auto_remove mag matches 1.. run kill @e[tag=aim_pos,type=marker]
+execute if score auto_remove mag matches 1.. run tag @e[tag=aim_pos] remove aim_pos

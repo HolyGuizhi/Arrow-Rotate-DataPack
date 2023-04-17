@@ -18,6 +18,10 @@ scoreboard objectives add AR_tmp dummy
 scoreboard objectives add mag dummy
 scoreboard players set 1000 mag 1000
 
+## 初始設定
+execute unless score first_set mag matches 1 run scoreboard players set auto_remove mag 0
+scoreboard players set first_set mag 1
+
 ## by NOPEname
 scoreboard objectives add nnmath_sqrt dummy
 scoreboard players set 2 nnmath_sqrt 2
